@@ -3,7 +3,7 @@
 Repository for text editor syntax highlighting.
 
 
-## Tamarin prover syntax for Vim
+## Syntax for Vim
 
 Although this repo contains syntax files for other editors it should work with 
 plugin-managers such as Vundle and Pathogen. Just add this line to the 
