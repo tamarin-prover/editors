@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     SAPIC format for Applied Pi calculus-style embedding in tamarin
-" Maintainer: Robert Künnemann <robert.kuennemann@uni-saarland.de>
-" Last Change:  2017 Feb 28
+" Maintainer:
+" Last Change:  2010 12 17
 " based on Claudio Fleiner's <claudio@fleiner.com> spthy syntax highlighting
 " file.
 
@@ -39,7 +39,7 @@ syn match sapicLAtom	        "@"
 syn match sapicLAtom	        "<"
 
 
-syn keyword sapicConstr         aenc adec senc sdec sign verify hashing signing
+syn keyword sapicConstr         aenc sdec senc sdec sign verify hashing signing
 syn match sapicConstr           "\<h("he=e-1
 syn match sapicConstr           "\<sk("he=e-1
 syn match sapicConstr           "\<pk("he=e-1
@@ -51,9 +51,11 @@ syn match sapicConstr           "\^"
 syn match sapicConstr           "\<diffie-hellman"
 syn match sapicConstr           "\<symmetric-encryption"
 syn match sapicConstr           "\<asymmetric-encryption"
+syn match sapicConstr           "\<translation-progress"
+syn match sapicConstr           "\<reliable-channel"
 syn match sapicConstr           "\<multiset"
 
-syn keyword sapicDecl           axiom lemma equations functions builtins heuristic protocol property in let theory begin end subsection section text predicates options
+syn keyword sapicDecl           axiom restriction lemma verdictfunction equations functions builtins protocol property in let theory begin end subsection section text predicates options heuristic 
 syn match sapicDecl             "\<exists-trace"
 syn match sapicDecl             "\<all-traces"
 syn match sapicDecl             "\<enable"
@@ -74,7 +76,7 @@ syn match sapicDecl             "-->"
 syn match sapicDecl             "--\["
 syn match sapicDecl             "\]->"
 
-syn keyword sapicTransfer       new in out lookup as in else if lock unlock event insert delete then
+syn keyword sapicTransfer       new in out lookup as in else if lock unlock event insert delete then accounts for parties otherwise
 syn match sapicTransfer         "||"
 syn match sapicTransfer         "!"
 
@@ -82,7 +84,7 @@ syn region sapicLiteral          start="'" end="'"
 
 syn match sapicLogicOp          "==>"
 syn match sapicLogicOp          "<=>"
-syn keyword sapicLogicOp        F T All Ex
+syn keyword sapicLogicOp        F T All Ex not 
 syn match sapicLogicOp          "|"
 syn match sapicLogicOp          "&"
 syn match sapicLogicOp          "@"
