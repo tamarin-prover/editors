@@ -1,5 +1,5 @@
 " Vim syntax file
-" Language:     SAPIC format for Applied Pi calculus-style embedding in tamarin
+" Language:     spthy format for Applied Pi calculus-style embedding in tamarin
 " Maintainer:
 " Last Change:  2010 12 17
 " based on Claudio Fleiner's <claudio@fleiner.com> spthy syntax highlighting
@@ -13,8 +13,8 @@ if !exists("main_syntax")
     finish
   endif
   " we define it here so that included files can test for it
-  let main_syntax='sapic'
-  syn region sapicFold start="{" end="}" transparent fold
+  let main_syntax='spthy'
+  syn region spthyFold start="{" end="}" transparent fold
 endif
 
 " don't use standard HiLink, it will not work with included syntax files
@@ -24,193 +24,214 @@ else
   command! -nargs=+ SpthyHiLink hi def link <args>
 endif
 
-" some characters that cannot be in a sapic program (outside a string)
-" syn match sapicError "[\\@`]"
-" syn match sapicError "<<<\|\.\.\|=>\|<>\|||=\|&&=\|[^-]->\|\*\/"
-" syn match sapicOK "\.\.\."
+" some characters that cannot be in a spthy program (outside a string)
+" syn match spthyError "[\\@`]"
+" syn match spthyError "<<<\|\.\.\|=>\|<>\|||=\|&&=\|[^-]->\|\*\/"
+" syn match spthyOK "\.\.\."
 
-syn match sapicLAtom	        ":>"
-syn match sapicLAtom	        "--|"
-syn match sapicLAtom	        "<:"
-syn match sapicLAtom	        ">+>"
-syn match sapicLAtom	        ">->"
-syn match sapicLAtom	        "="
-syn match sapicLAtom	        "@"
-syn match sapicLAtom	        "<"
-
-
-syn keyword sapicConstr         aenc sdec senc sdec sign verify hashing signing
-syn match sapicConstr           "\<h("he=e-1
-syn match sapicConstr           "\<sk("he=e-1
-syn match sapicConstr           "\<pk("he=e-1
-syn match sapicConstr           "\<fr("he=e-1
-syn match sapicConstr           "\<pb("he=e-1
-syn match sapicConstr           "\<lts("he=e-1
-syn match sapicConstr           "*"
-syn match sapicConstr           "\^"
-syn match sapicConstr           "\<diffie-hellman"
-syn match sapicConstr           "\<symmetric-encryption"
-syn match sapicConstr           "\<asymmetric-encryption"
-syn match sapicConstr           "\<translation-progress"
-syn match sapicConstr           "\<reliable-channel"
-syn match sapicConstr           "\<multiset"
-
-syn keyword sapicDecl           axiom restriction lemma verdictfunction equations functions builtins protocol property in let theory begin end subsection section text predicates options heuristic 
-syn match sapicDecl             "\<exists-trace"
-syn match sapicDecl             "\<all-traces"
-syn match sapicDecl             "\<enable"
-syn match sapicDecl             "\<rule"
-syn match sapicDecl             "\<assertions"
-syn match sapicDecl             "\<modulo"
-syn match sapicDecl             "\<default_rules"
-syn match sapicDecl             "\<anb-proto"
-syn match sapicDecl             ":"
-syn match sapicDecl             "{\*"
-syn match sapicDecl             "\*}"
-syn match sapicDecl             "\""
-syn match sapicDecl             "\d\+\."
-
-syn match sapicTransfer         "->"
-syn match sapicTransfer         "<-"
-syn match sapicDecl             "-->"
-syn match sapicDecl             "--\["
-syn match sapicDecl             "\]->"
-
-syn keyword sapicTransfer       new in out lookup as in else if lock unlock event insert delete then accounts for parties otherwise
-syn match sapicTransfer         "||"
-syn match sapicTransfer         "!"
-
-syn region sapicLiteral          start="'" end="'"
-
-syn match sapicLogicOp          "==>"
-syn match sapicLogicOp          "<=>"
-syn keyword sapicLogicOp        F T All Ex not 
-syn match sapicLogicOp          "|"
-syn match sapicLogicOp          "&"
-syn match sapicLogicOp          "@"
-syn match sapicLogicOp          "\."
+syn match spthyLAtom	        ":>"
+syn match spthyLAtom	        "--|"
+syn match spthyLAtom	        "<:"
+syn match spthyLAtom	        ">+>"
+syn match spthyLAtom	        ">->"
+syn match spthyLAtom	        "="
+syn match spthyLAtom	        "@"
+syn match spthyLAtom	        "<"
 
 
+syn keyword spthyConstr         aenc sdec senc sdec sign verify hashing signing
+syn match spthyConstr           "\<h("he=e-1
+syn match spthyConstr           "\<sk("he=e-1
+syn match spthyConstr           "\<pk("he=e-1
+syn match spthyConstr           "\<fr("he=e-1
+syn match spthyConstr           "\<pb("he=e-1
+syn match spthyConstr           "\<lts("he=e-1
+syn match spthyConstr           "*"
+syn match spthyConstr           "\^"
+syn match spthyConstr           "\<diffie-hellman"
+syn match spthyConstr           "\<symmetric-encryption"
+syn match spthyConstr           "\<asymmetric-encryption"
+syn match spthyConstr           "\<translation-progress"
+syn match spthyConstr           "\<reliable-channel"
+syn match spthyConstr           "\<multiset"
+
+syn keyword spthyDecl           axiom restriction lemma verdictfunction equations functions builtins protocol property in let theory begin end subsection section text predicates options heuristic 
+axiom
+begin
+builtins
+end
+equations
+functions
+heuristic
+in
+lemma
+let
+options
+predicates
+property
+protocol
+restriction
+section
+subsection
+text
+theory
+verdictfunction
+
+syn match spthyDecl             "\<exists-trace"
+syn match spthyDecl             "\<all-traces"
+syn match spthyDecl             "\<enable"
+syn match spthyDecl             "\<rule"
+syn match spthyDecl             "\<assertions"
+syn match spthyDecl             "\<modulo"
+syn match spthyDecl             "\<default_rules"
+syn match spthyDecl             "\<anb-proto"
+syn match spthyDecl             ":"
+syn match spthyDecl             "{\*"
+syn match spthyDecl             "\*}"
+syn match spthyDecl             "\""
+syn match spthyDecl             "\d\+\."
+
+syn match spthyTransfer         "->"
+syn match spthyTransfer         "<-"
+syn match spthyDecl             "-->"
+syn match spthyDecl             "--\["
+syn match spthyDecl             "\]->"
+
+syn keyword spthyTransfer       new in out lookup as in else if lock unlock event insert delete then accounts for parties otherwise
+syn match spthyTransfer         "||"
+syn match spthyTransfer         "!"
+
+syn region spthyLiteral          start="'" end="'"
+
+syn match spthyLogicOp          "==>"
+syn match spthyLogicOp          "<=>"
+syn keyword spthyLogicOp        F T All Ex not 
+syn match spthyLogicOp          "|"
+syn match spthyLogicOp          "&"
+syn match spthyLogicOp          "@"
+syn match spthyLogicOp          "\."
 
 
-" The following cluster contains all sapic groups except the contained ones
-syn cluster sapicTop add=sapicLAtom,sapicDecl
+
+
+" The following cluster contains all spthy groups except the contained ones
+syn cluster spthyTop add=spthyLAtom,spthyDecl
 
 
 " Comments
-syn keyword sapicTodo		 contained TODO FIXME XXX
-syn region  sapicComment		 start="/\*"  end="\*/" contains=sapicTodo
-syn match   sapicLineComment      "//.*" contains=sapicTodo
+syn keyword spthyTodo		 contained TODO FIXME XXX
+syn region  spthyComment		 start="/\*"  end="\*/" contains=spthyTodo
+syn match   spthyLineComment      "//.*" contains=spthyTodo
 
-syn cluster sapicTop add=sapicComment,sapicLineComment
+syn cluster spthyTop add=spthyComment,spthyLineComment
 
 " Strings and constants
-" syn match   sapicSpecialError     contained "\\."
-" syn match   sapicSpecialCharError contained "[^']"
-" syn match   sapicSpecialChar      contained "\\\([4-9]\d\|[0-3]\d\d\|[\"\\'ntbrf]\|u\+\x\{4\}\)"
-" syn region  sapicString		start=+"+ end=+"+ end=+$+ contains=sapicSpecialChar,sapicSpecialError,@Spell
+" syn match   spthySpecialError     contained "\\."
+" syn match   spthySpecialCharError contained "[^']"
+" syn match   spthySpecialChar      contained "\\\([4-9]\d\|[0-3]\d\d\|[\"\\'ntbrf]\|u\+\x\{4\}\)"
+" syn region  spthyString		start=+"+ end=+"+ end=+$+ contains=spthySpecialChar,spthySpecialError,@Spell
 " " next line disabled, it can cause a crash for a long line
-" "syn match   sapicStringError	  +"\([^"\\]\|\\.\)*$+
-" syn match   sapicCharacter	 "'[^']*'" contains=sapicSpecialChar,sapicSpecialCharError
-" syn match   sapicCharacter	 "'\\''" contains=sapicSpecialChar
-" syn match   sapicCharacter	 "'[^\\]'"
-" syn match   sapicNumber		 "\<\(0[0-7]*\|0[xX]\x\+\|\d\+\)[lL]\=\>"
-" syn match   sapicNumber		 "\(\<\d\+\.\d*\|\.\d\+\)\([eE][-+]\=\d\+\)\=[fFdD]\="
-" syn match   sapicNumber		 "\<\d\+[eE][-+]\=\d\+[fFdD]\=\>"
-" syn match   sapicNumber		 "\<\d\+\([eE][-+]\=\d\+\)\=[fFdD]\>"
+" "syn match   spthyStringError	  +"\([^"\\]\|\\.\)*$+
+" syn match   spthyCharacter	 "'[^']*'" contains=spthySpecialChar,spthySpecialCharError
+" syn match   spthyCharacter	 "'\\''" contains=spthySpecialChar
+" syn match   spthyCharacter	 "'[^\\]'"
+" syn match   spthyNumber		 "\<\(0[0-7]*\|0[xX]\x\+\|\d\+\)[lL]\=\>"
+" syn match   spthyNumber		 "\(\<\d\+\.\d*\|\.\d\+\)\([eE][-+]\=\d\+\)\=[fFdD]\="
+" syn match   spthyNumber		 "\<\d\+[eE][-+]\=\d\+[fFdD]\=\>"
+" syn match   spthyNumber		 "\<\d\+\([eE][-+]\=\d\+\)\=[fFdD]\>"
 "
 " " unicode characters
-" syn match   sapicSpecial "\\u\+\d\{4\}"
+" syn match   spthySpecial "\\u\+\d\{4\}"
 "
-" syn cluster sapicTop add=sapicString,sapicCharacter,sapicNumber,sapicSpecial,sapicStringError
+" syn cluster spthyTop add=spthyString,spthyCharacter,spthyNumber,spthySpecial,spthyStringError
 
 " catch errors caused by wrong parenthesis
-" syn region  sapicParenT  transparent matchgroup=sapicParen  start="("  end=")" contains=@sapicTop,sapicParenT1
-" syn region  sapicParenT1 transparent matchgroup=sapicParen1 start="(" end=")" contains=@sapicTop,sapicParenT2 contained
-" syn region  sapicParenT2 transparent matchgroup=sapicParen2 start="(" end=")" contains=@sapicTop,sapicParenT  contained
-" syn match   sapicParenError       ")"
+" syn region  spthyParenT  transparent matchgroup=spthyParen  start="("  end=")" contains=@spthyTop,spthyParenT1
+" syn region  spthyParenT1 transparent matchgroup=spthyParen1 start="(" end=")" contains=@spthyTop,spthyParenT2 contained
+" syn region  spthyParenT2 transparent matchgroup=spthyParen2 start="(" end=")" contains=@spthyTop,spthyParenT  contained
+" syn match   spthyParenError       ")"
 " " catch errors caused by wrong square parenthesis
-" syn region  sapicParenT  transparent matchgroup=sapicParen  start="\["  end="\]" contains=@sapicTop,sapicParenT1
-" syn region  sapicParenT1 transparent matchgroup=sapicParen1 start="\[" end="\]" contains=@sapicTop,sapicParenT2 contained
-" syn region  sapicParenT2 transparent matchgroup=sapicParen2 start="\[" end="\]" contains=@sapicTop,sapicParenT  contained
-" syn match   sapicParenError       "\]"
+" syn region  spthyParenT  transparent matchgroup=spthyParen  start="\["  end="\]" contains=@spthyTop,spthyParenT1
+" syn region  spthyParenT1 transparent matchgroup=spthyParen1 start="\[" end="\]" contains=@spthyTop,spthyParenT2 contained
+" syn region  spthyParenT2 transparent matchgroup=spthyParen2 start="\[" end="\]" contains=@spthyTop,spthyParenT  contained
+" syn match   spthyParenError       "\]"
 "
-" SpthyHiLink sapicParenError       sapicError
+" SpthyHiLink spthyParenError       spthyError
 
-if !exists("sapic_minlines")
-  let sapic_minlines = 10
+if !exists("spthy_minlines")
+  let spthy_minlines = 10
 endif
-exec "syn sync ccomment sapicComment minlines=" . sapic_minlines
+exec "syn sync ccomment spthyComment minlines=" . spthy_minlines
 
 " The default highlighting.
-if version >= 508 || !exists("did_sapic_syn_inits")
+if version >= 508 || !exists("did_spthy_syn_inits")
   if version < 508
-    let did_sapic_syn_inits = 1
+    let did_spthy_syn_inits = 1
   endif
-  SpthyHiLink sapicLAtom		Operator
-  SpthyHiLink sapicProc		Operator
-  SpthyHiLink sapicComment		Comment
-  SpthyHiLink sapicDocComment		Comment
-  SpthyHiLink sapicLineComment		Comment
-  SpthyHiLink sapicError		Error
-  SpthyHiLink sapicDecl		        Typedef
-  SpthyHiLink sapicTransfer             Typedef
-  SpthyHiLink sapicConstr               Function
-  SpthyHiLink sapicLiteral              String
-  SpthyHiLink sapicTODO                 Todo
-  SpthyHiLink sapicLogicOp              Boolean
-"  SpthyHiLink sapicVarArg               Function
-"  SpthyHiLink sapicBraces		Function
-"  SpthyHiLink sapicBranch		Conditional
-"  SpthyHiLink sapicUserLabelRef		sapicUserLabel
-"  SpthyHiLink sapicLabel		Label
-"  SpthyHiLink sapicUserLabel		Label
-"  SpthyHiLink sapicConditional		Conditional
-"  SpthyHiLink sapicRepeat		Repeat
-"  SpthyHiLink sapicExceptions		Exception
-"  SpthyHiLink sapicAssert		Statement
-"  SpthyHiLink sapicStorageClass		StorageClass
-"  SpthyHiLink sapicMethodDecl		sapicStorageClass
-"  SpthyHiLink sapicClassDecl		sapicStorageClass
-"  SpthyHiLink sapicScopeDecl		sapicStorageClass
-"  SpthyHiLink sapicBoolean		Boolean
-"  SpthyHiLink sapicSpecial		Special
-"  SpthyHiLink sapicSpecialError		Error
-"  SpthyHiLink sapicSpecialCharError	Error
-"  SpthyHiLink sapicString		String
-"  SpthyHiLink sapicCharacter		Character
-"  SpthyHiLink sapicSpecialChar		SpecialChar
-"  SpthyHiLink sapicNumber		Number
-"  SpthyHiLink sapicStringError		Error
-"  SpthyHiLink sapicStatement		Statement
-"  SpthyHiLink sapicOperator		Operator
-"  SpthyHiLink sapicComment		Comment
-"  SpthyHiLink sapicDocComment		Comment
-"  SpthyHiLink sapicLineComment		Comment
-"  SpthyHiLink sapicConstant		Constant
-"  SpthyHiLink sapicTypedef		Typedef
-"  SpthyHiLink sapicTodo			Todo
-"  SpthyHiLink sapicAnnotation             PreProc
+  SpthyHiLink spthyLAtom		Operator
+  SpthyHiLink spthyProc		Operator
+  SpthyHiLink spthyComment		Comment
+  SpthyHiLink spthyDocComment		Comment
+  SpthyHiLink spthyLineComment		Comment
+  SpthyHiLink spthyError		Error
+  SpthyHiLink spthyDecl		        Typedef
+  SpthyHiLink spthyTransfer             Typedef
+  SpthyHiLink spthyConstr               Function
+  SpthyHiLink spthyLiteral              String
+  SpthyHiLink spthyTODO                 Todo
+  SpthyHiLink spthyLogicOp              Boolean
+"  SpthyHiLink spthyVarArg               Function
+"  SpthyHiLink spthyBraces		Function
+"  SpthyHiLink spthyBranch		Conditional
+"  SpthyHiLink spthyUserLabelRef		spthyUserLabel
+"  SpthyHiLink spthyLabel		Label
+"  SpthyHiLink spthyUserLabel		Label
+"  SpthyHiLink spthyConditional		Conditional
+"  SpthyHiLink spthyRepeat		Repeat
+"  SpthyHiLink spthyExceptions		Exception
+"  SpthyHiLink spthyAssert		Statement
+"  SpthyHiLink spthyStorageClass		StorageClass
+"  SpthyHiLink spthyMethodDecl		spthyStorageClass
+"  SpthyHiLink spthyClassDecl		spthyStorageClass
+"  SpthyHiLink spthyScopeDecl		spthyStorageClass
+"  SpthyHiLink spthyBoolean		Boolean
+"  SpthyHiLink spthySpecial		Special
+"  SpthyHiLink spthySpecialError		Error
+"  SpthyHiLink spthySpecialCharError	Error
+"  SpthyHiLink spthyString		String
+"  SpthyHiLink spthyCharacter		Character
+"  SpthyHiLink spthySpecialChar		SpecialChar
+"  SpthyHiLink spthyNumber		Number
+"  SpthyHiLink spthyStringError		Error
+"  SpthyHiLink spthyStatement		Statement
+"  SpthyHiLink spthyOperator		Operator
+"  SpthyHiLink spthyComment		Comment
+"  SpthyHiLink spthyDocComment		Comment
+"  SpthyHiLink spthyLineComment		Comment
+"  SpthyHiLink spthyConstant		Constant
+"  SpthyHiLink spthyTypedef		Typedef
+"  SpthyHiLink spthyTodo			Todo
+"  SpthyHiLink spthyAnnotation             PreProc
 "
-"  SpthyHiLink sapicCommentTitle		SpecialComment
-"  SpthyHiLink sapicDocTags		Special
-"  SpthyHiLink sapicDocParam		Function
-"  SpthyHiLink sapicDocSeeTagParam		Function
-"  SpthyHiLink sapicCommentStar		sapicComment
+"  SpthyHiLink spthyCommentTitle		SpecialComment
+"  SpthyHiLink spthyDocTags		Special
+"  SpthyHiLink spthyDocParam		Function
+"  SpthyHiLink spthyDocSeeTagParam		Function
+"  SpthyHiLink spthyCommentStar		spthyComment
 "
-"  SpthyHiLink sapicType			Type
-"  SpthyHiLink sapicExternal		Include
+"  SpthyHiLink spthyType			Type
+"  SpthyHiLink spthyExternal		Include
 "
 "  SpthyHiLink htmlComment		Special
 "  SpthyHiLink htmlCommentPart		Special
-"  SpthyHiLink sapicSpaceError		Error
+"  SpthyHiLink spthySpaceError		Error
 endif
 
 delcommand SpthyHiLink
 
-let b:current_syntax = "sapic"
+let b:current_syntax = "spthy"
 
-if main_syntax == 'sapic'
+if main_syntax == 'spthy'
   unlet main_syntax
 endif
 
