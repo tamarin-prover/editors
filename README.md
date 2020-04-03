@@ -12,6 +12,11 @@ plugin-managers such as Vundle and Pathogen. Just add this line to the
 ```vimrc
 Plugin "tamarin-prover/editors"
 ```
+or if you use [vim-plug]( https://github.com/junegunn/vim-plug ) and want to
+follow tamarin's  `develop` branch.
+```vimrc
+Plug 'tamarin-prover/editors', { 'branch': 'develop' }
+```
 
 The files
 
