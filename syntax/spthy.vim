@@ -55,7 +55,7 @@ syn match spthyConstr           "\<translation-progress"
 syn match spthyConstr           "\<reliable-channel"
 syn match spthyConstr           "\<multiset"
 
-syn keyword spthyDecl           axiom begin builtins end equations functions heuristic in let options predicates property protocol restriction section subsection text theory verdictfunction
+syn keyword spthyDecl           axiom begin builtins end equations functions heuristic in let options predicate predicates property protocol restriction section subsection text theory verdictfunction
 
 
 syn match spthyDecl             "\<lemma\>"
@@ -78,7 +78,7 @@ syn match spthyTransfer         "<-"
 syn match spthyDecl             "-->"
 syn match spthyDecl             "--\["
 syn match spthyDecl             "\]->"
-syn keyword spthyTransfer       new in out lookup as in else if lock unlock event insert delete then accounts for parties otherwise
+syn keyword spthyTransfer       new in out lookup as in else if lock unlock event insert delete then then account accounts for parties otherwise
 syn match spthyTransfer         "||"
 syn match spthyTransfer         "|"
 syn match spthyTransfer         "!"
