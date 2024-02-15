@@ -62,13 +62,14 @@
   (setq-local syntax-propertize-function
               (syntax-propertize-rules
                ;; Mark '<' as a delimiter if it is preceded by
-               ;; '=', '(' or ','
+               ;; '=', '(' or ','.
                ("[=(,]+[[:space:]]*\\(<\\)" (1 "(>"))
                ;; Mark '>' as a delimiter if it is not part of an
                ;; arrow and is succeeded by '=', ')', ',' or by an
                ;; end-of-line.
                ("[^-=]\\(>\\)[[:space:]]*\\([=),]+\\|$\\)" (1 ")<"))
-               ;; Treat " as delimiters
+               ;; Treat " as delimiter only when preceded by a line
+               ;; ending with ':'.
                (":[[:space:]\n]*\\(\"\\)[^\"]*\\(\"\\)" (1 "(\"") (2 ")\"") )
                ))
 
