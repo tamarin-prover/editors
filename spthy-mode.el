@@ -50,7 +50,7 @@
 
 (define-derived-mode spthy-mode pre-spthy-mode "SPTHY"
   "Major mode for editing Tamarin's SPTHY files."
-  
+
   ;; Fontify keywords
   (setq font-lock-defaults spthy-font-lock-defaults)
 
@@ -58,10 +58,21 @@
   (modify-syntax-entry ?\" "w" spthy-mode-syntax-table)
   (modify-syntax-entry ?' "\"" spthy-mode-syntax-table)
 
-  ;; < > are delimiters too
-  (modify-syntax-entry ?< "(" spthy-mode-syntax-table)
-  (modify-syntax-entry ?> "(" spthy-mode-syntax-table)
-  
+  ;; Use regex to assign syntax classes
+  (setq-local syntax-propertize-function
+              (syntax-propertize-rules
+               ;; Mark '<' as a delimiter if it is preceded by
+               ;; '=', '(' or ','.
+               ("[=(,]+[[:space:]]*\\(<\\)" (1 "(>"))
+               ;; Mark '>' as a delimiter if it is not part of an
+               ;; arrow and is succeeded by '=', ')', ',' or by an
+               ;; end-of-line.
+               ("[^-=]\\(>\\)[[:space:]]*\\([=),]+\\|$\\)" (1 ")<"))
+               ;; Treat " as delimiter only when preceded by a line
+               ;; ending with ':'.
+               (":[[:space:]\n]*\\(\"\\)[^\"]*\\(\"\\)" (1 "(\"") (2 ")\"") )
+               ))
+
   )
 
 (provide 'spthy-mode)
